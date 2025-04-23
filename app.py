@@ -16,10 +16,10 @@ def run_test(test_case):
 
 def run_playwright_test(test_case):
     # Path to your pytest test folder and specific test cases
-    test_script = f"tests/{test_case}.py"
+    test_script = f"tests/{test_case}"
 
     # Run the pytest command for the specific test case
-    result = subprocess.run(['pytest', test_script], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    result = subprocess.run(['pytest', "-m", test_script], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
     if result.returncode == 0:
         return f"Test {test_case} passed!"

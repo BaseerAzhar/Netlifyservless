@@ -3,7 +3,6 @@ import json
 
 
 def handler(event, context):
-    # Extract test case name from URL path parameter
     test_case = event['pathParameters']['test_case']
 
     try:
@@ -20,10 +19,8 @@ def handler(event, context):
 
 
 def run_playwright_test(test_case):
-    # Path to your pytest test folder and specific test cases
     test_script = f"tests/{test_case}.py"
 
-    # Run the pytest command for the specific test case
     result = subprocess.run(['pytest', test_script], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
     if result.returncode == 0:
