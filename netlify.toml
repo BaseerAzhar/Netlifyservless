@@ -3,11 +3,11 @@
   functions = "functions"    # Directory with your serverless functions (Python)
   command = "pip install -r requirements.txt && python -m venv env && source env/bin/activate && python -m pip install --upgrade pip && pip install pytest-playwright && pip install playwright && python -m playwright install chromium"
 
-[functions]
-  node_bundler = "esbuild"   # Bundler used by Netlify for Python functions
-
-
-[[redirects]]
-  from = "/run_test"
-  to = "/.netlify/functions/run_test"
-  status = 200
+#[functions]
+#  node_bundler = "esbuild"   # Bundler used by Netlify for Python functions
+#
+#
+#[[redirects]]
+#  from = "/run_test"
+#  to = "/.netlify/functions/run_test"
+#  status = 200
