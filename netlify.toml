@@ -1,0 +1,6 @@
+[build]
+  functions = "functions"  # Points to the folder containing the serverless functions
+  publish = "frontend"     # Points to the folder containing the static frontend (HTML, CSS, JS)
+
+[functions]
+  node_bundler = "esbuild"  # Used to bundle the Python code for Lambda

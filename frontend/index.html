@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Case Runner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Run Test Cases</h1>
+    <button onclick="runTestCase('test_case_1')">Run Test Case 1</button>
+    <button onclick="runTestCase('test_case_2')">Run Test Case 2</button>
+    <button onclick="runTestCase('test_case_3')">Run Test Case 3</button>
+    
+    <div id="result"></div>
+
+    <script>
+        async function runTestCase(testCase) {
+            document.getElementById('result').innerText = 'Running...';
+            const response = await fetch(`/run/${testCase}`, { method: 'POST' });
+            const result = await response.text();
+            document.getElementById('result').innerText = result;
+        }
+    </script>
+</body>
+</html>
+</title>
+</head>
+<body>
+
+</body>
+</html>
