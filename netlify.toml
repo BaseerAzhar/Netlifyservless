@@ -1,13 +1,16 @@
-#[build]
-#  functions = "functions"  # Points to the folder containing the serverless functions
-#  publish = "frontend"     # Points to the folder containing the static frontend (HTML, CSS, JS)
-#
-#[functions]
-#  node_bundler = "esbuild"  # Used to bundle the Python code for Lambda
 [build]
-#  publish = "public"
-#  functions = "functions"
+  publish = "static"         # Directory with your templates files (HTML, JS, CSS)
+  functions = "functions"    # Directory with your serverless functions (Python)
   command = "pip install -r requirements.txt && python -m venv env && source env/bin/activate && python -m pip install --upgrade pip && pip install pytest-playwright && pip install playwright && python -m playwright install chromium"
+
+[functions]
+  node_bundler = "esbuild"   # Bundler used by Netlify for Python functions
+
+[[redirects]]
+  from = "/run_test"
+  to = "/.netlify/functions/run_test"
+  status = 200
+
 
 [build.environment]
   PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = "false"

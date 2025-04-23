@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Run Test Case</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Run Test Case</h1>
+    <button onclick="runTest()">Run Test Case 1</button>
+
+    <div id="result"></div>
+
+    <script>
+        async function runTest() {
+            document.getElementById('result').innerText = 'Running...';
+            try {
+                const response = await fetch('/run_test', { method: 'POST' });
+                const result = await response.json();
+                if (response.ok) {
+                    document.getElementById('result').innerText = 'Test Passed: ' + result.message;
+                } else {
+                    document.getElementById('result').innerText = 'Test Failed: ' + result.message;
+                }
+            } catch (error) {
+                document.getElementById('result').innerText = 'An error occurred: ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>
